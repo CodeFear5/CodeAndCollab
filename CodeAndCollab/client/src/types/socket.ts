@@ -24,8 +24,15 @@ enum SocketEvent {
     TYPING_PAUSE = "typing-pause",
     USERNAME_EXISTS = "username-exists",
     REQUEST_DRAWING = "request-drawing",
-    SYNC_DRAWING = "sync-drawing",
+    SYNC_DRAWING = "sync-DRAWING",
     DRAWING_UPDATE = "drawing-update",
+    // Add these new events:
+    OFFER = "offer",
+    ANSWER = "answer",
+    ICE_CANDIDATE = "ice-candidate",
+    VIDEO_CALL_REQUEST = "video-call-request",
+    VIDEO_CALL_PERMISSION = "video-call-permission",
+    VIDEO_CALL_REJECTED = "video-call-rejected",
 }
 
 interface SocketContext {

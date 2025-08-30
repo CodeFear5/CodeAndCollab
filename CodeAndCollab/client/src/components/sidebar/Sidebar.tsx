@@ -11,7 +11,7 @@ import { IoCodeSlash } from "react-icons/io5";
 import { MdOutlineDraw } from "react-icons/md";
 import cn from "classnames";
 import { Tooltip } from "react-tooltip";
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { tooltipStyles } from "./tooltipStyles";
 import VideoCallView from "./sidebar-views/VideoCallView";
 import { FaVideo } from "react-icons/fa";
@@ -25,7 +25,6 @@ function Sidebar() {
   const { isMobile } = useWindowDimensions();
 
   const { isCalling, stopCall } = useVideoCall();
-  
 
   const [showTooltip, setShowTooltip] = useState(true);
   const [isVideoCallOpen, setIsVideoCallOpen] = useState(false);
@@ -45,8 +44,16 @@ function Sidebar() {
     setIsVideoCallOpen((prev) => !prev);
   };
 
+  // 👉 double click toggler
+  const handleDoubleClick = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
-    <aside className="flex w-full md:h-full md:max-h-full md:min-h-full md:w-auto">
+    <aside
+      className="flex w-full md:h-full md:max-h-full md:min-h-full md:w-auto"
+      onDoubleClick={handleDoubleClick} // ✅ Double-click toggle
+    >
       <div
         className={cn(
           "fixed bottom-0 left-0 z-50 flex h-[50px] w-full gap-4 border-t border-darkHover bg-dark p-2 md:static md:h-full md:w-[50px] md:min-w-[50px] md:flex-col md:border-r md:border-t-0 md:p-2 md:pt-4",
